@@ -1,0 +1,5 @@
+.home {
+  position: relative;
+  height: 100%;
+  background-image: url("https://raw.githubusercontent.com/telegramdesktop/tdesktop/dev/Telegram/Resources/art/bg_initial.jpg");
+}
