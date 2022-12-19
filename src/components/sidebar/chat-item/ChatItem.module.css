@@ -1,0 +1,31 @@
+.chatItem {
+  display: flex;
+  flex-direction: row;
+  border-radius: 8px;
+  gap: 8px;
+  align-items: center;
+}
+
+.content {
+  width: 100%;
+}
+
+.topSection{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.imageContainer{
+  height: 50px;
+  width: 50px;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+.img{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
