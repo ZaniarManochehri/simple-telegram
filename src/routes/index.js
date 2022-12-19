@@ -1,17 +1,25 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 //component
-import { HomePage } from "pages";
+import { HomePage, Sec } from "pages";
 import { Layout } from "components";
 
 export const routes = {
-  HOME: "/",
+  ROOT: "/",
+  CHAT: "/:userId",
 };
 const Routers = () => {
   const pages = [
     {
-      path: routes.HOME,
+      path: routes.CHAT,
       component: <HomePage />,
+      title: "",
+      isHome: true,
+      isNavigate: true,
+    },
+    {
+      path: routes.ROOT,
+      component: <Sec />,
       title: "",
       isHome: true,
       isNavigate: true,
