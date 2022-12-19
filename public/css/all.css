@@ -116,3 +116,12 @@
 .fa-navicon:before {
     content: "\f0c9";
 }
+
+.fa-phone:before {
+    content: "\f095";
+}
+
+.fa-ellipsis-v:before,
+.fa-ellipsis-vertical:before {
+    content: "\f142";
+}

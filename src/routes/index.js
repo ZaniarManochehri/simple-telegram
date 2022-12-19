@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 //component
-import { HomePage } from "pages";
+import { InnerChatPage } from "pages";
 import { Layout } from "components";
 
 export const routes = {
@@ -12,14 +12,14 @@ const Routers = () => {
   const pages = [
     {
       path: routes.CHAT,
-      component: <HomePage />,
+      component: <InnerChatPage />,
       title: "",
       isHome: true,
       isNavigate: true,
     },
     {
       path: routes.ROOT,
-      component: <HomePage />,
+      component: <InnerChatPage />,
       title: "",
       isHome: true,
       isNavigate: true,

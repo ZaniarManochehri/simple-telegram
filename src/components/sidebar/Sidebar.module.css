@@ -5,7 +5,7 @@
 }
 
 .searchboxContainer{
-    padding: 8px 16px;
+    padding: 16px;
     display: flex;
     flex-direction: row;
     gap: 8px;
@@ -13,8 +13,7 @@
 
 .chatListContainer{
     padding: 0 16px;
-    /*height: 100%;*/
-    margin-top: 24px;
+    margin-top: 16px;
     overflow-y: auto;
     overflow-x: hidden;
     display: flex;

@@ -3,7 +3,7 @@ import styles from "./ChatItem.module.css";
 const ChatItem = ({ item, selected, onClick }) => {
   const lastChat =
     item.lastChat.length > 30
-      ? item.lastChat.substring(0, 30) + "..."
+      ? item.lastChat.substring(0, 20) + "..."
       : item.lastChat;
   return (
     <div
