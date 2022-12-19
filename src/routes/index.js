@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 //component
-import { HomePage, Sec } from "pages";
+import { HomePage } from "pages";
 import { Layout } from "components";
 
 export const routes = {
@@ -19,7 +19,7 @@ const Routers = () => {
     },
     {
       path: routes.ROOT,
-      component: <Sec />,
+      component: <HomePage />,
       title: "",
       isHome: true,
       isNavigate: true,
