@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, Fragment } from "react";
+import axios from "axios";
 import { useParams } from "react-router-dom";
 
 //component
@@ -9,25 +10,16 @@ const InnerChat = () => {
   const listRef = useRef(null);
   const [messageInputValue, setMessageInputValue] = useState("");
   const [messages, setMessages] = useState([]);
+  const [loadingData, setLoadingData] = useState(false);
+  const [userName, setUserName] = useState("");
+  const [avatar, setAvatar] = useState("");
 
   const getConversion = async () => {
-    let array = [];
-    for (let i = 0; i < 50; i++) {
-      if (i % 2 === 0) {
-        array.push({
-          message: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ${i}`,
-          time: "07:12 PM",
-          type: "received",
-        });
-      } else {
-        array.push({
-          message: `test for send in simple message ${i}`,
-          time: "07:12 PM",
-          type: "send",
-        });
-      }
-    }
-    return array;
+    setLoadingData(true);
+    const { data } = await axios.get(
+      `http://localhost:3004/messages/${userId}`
+    );
+    return data;
   };
 
   const timeNow = () => {
@@ -59,23 +51,34 @@ const InnerChat = () => {
   };
 
   useEffect(() => {
-    getConversion().then((mes) => {
-      setMessages(mes);
-    });
-    if (userId) scrollToBottom("list");
+    if (userId) {
+      getConversion().then((data) => {
+        setLoadingData(false);
+        setUserName(data.name);
+        setAvatar(data.avatar);
+        setMessages(data.messages);
+      });
+      scrollToBottom("list");
+    }
   }, [userId]);
 
   return (
     <div className={styles.container}>
-      {userId && <HomeHeader />}
+      {userId && <HomeHeader name={userName} avatar={avatar} />}
       {userId && (
         <div className={styles.wrapper}>
           <div className={styles.content} ref={listRef} id="list">
-            {messages?.map((message, index) => (
-              <Fragment key={index}>
-                <MessageCard message={message} />
-              </Fragment>
-            ))}
+            {loadingData ? (
+              <div className={styles.spinnerContainer}>
+                <i className="fa-regular fa-spinner fa-spin"></i>
+              </div>
+            ) : (
+              messages?.map((message, index) => (
+                <Fragment key={index}>
+                  <MessageCard message={message} />
+                </Fragment>
+              ))
+            )}
           </div>
           <footer className={styles.footer}>
             <MessageInput

@@ -148,3 +148,14 @@
 .fa-gear:before {
   content: "\f013";
 }
+.fa-arrow-left:before {
+  content: "\f060";
+}
+
+.fa-pen:before {
+  content: "\f304";
+}
+
+.fa-spinner:before {
+  content: "\f110";
+}

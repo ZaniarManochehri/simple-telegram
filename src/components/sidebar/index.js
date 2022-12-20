@@ -1,4 +1,5 @@
 import { Fragment, useState, useRef, useEffect } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 //component
@@ -6,27 +7,18 @@ import styles from "./Sidebar.module.css";
 import { Searchbox, Setting } from "components";
 import Menu from "./slot/menu";
 import ChatItem from "./slot/chat-item";
+import { ReactLog, Wolf, Telegram } from "assets";
 
 const Sidebar = () => {
   const searchSectionRef = useRef(null);
   const navigate = useNavigate();
 
   const [chats, setChats] = useState([]);
+  const [loadingChats, setLoadingChats] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [searchSectionHeight, setSearchSectionHeight] = useState(0);
   const [clickedItem, setClickedItem] = useState();
   const [openSetting, setOpenSetting] = useState(false);
-
-  const randomString = (length) => {
-    let result = "";
-    const characters =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    const charactersLength = characters.length;
-    for (let i = 0; i < length; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-  };
 
   const handleClickItem = (item) => {
     setClickedItem(item);
@@ -36,23 +28,11 @@ const Sidebar = () => {
   useEffect(() => {
     setSearchSectionHeight(searchSectionRef.current.clientHeight + 25);
 
-    const array = [];
-    for (let i = 0; i < 50; i++) {
-      array.push({
-        id: `@${randomString(6)}`,
-        name: `Telegram${i}`,
-        lastChat:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        date: "Doc 17",
-        avatar:
-          i % 2 === 0
-            ? "/telegram.png"
-            : i % 3 === 0
-            ? "image.jpeg"
-            : "/logo512.png",
-      });
-    }
-    setChats(array);
+    setLoadingChats(true);
+    axios.get("http://localhost:3004/contacts").then((res) => {
+      setChats(res.data);
+      setLoadingChats(false);
+    });
   }, []);
 
   return (
@@ -78,18 +58,24 @@ const Sidebar = () => {
         className={styles.chatListContainer}
         style={{ height: `calc(100% - ${searchSectionHeight}px)` }}
       >
-        {chats?.map((item, index) => (
-          <Fragment key={index}>
-            <ChatItem
-              item={item}
-              selected={item.id == clickedItem?.id}
-              onClick={() => handleClickItem(item)}
-            />
-          </Fragment>
-        ))}
+        {loadingChats ? (
+          <div className={styles.spinnerContainer}>
+            <i className="fa-regular fa-spinner fa-spin"></i>
+          </div>
+        ) : (
+          chats?.map((item, index) => (
+            <Fragment key={index}>
+              <ChatItem
+                item={item}
+                selected={item.id == clickedItem?.id}
+                onClick={() => handleClickItem(item)}
+              />
+            </Fragment>
+          ))
+        )}
       </div>
       <div className={`${styles.profile} ${openSetting && styles.openProfile}`}>
-        <Setting />
+        <Setting onBack={() => setOpenSetting(false)} />
       </div>
     </div>
   );

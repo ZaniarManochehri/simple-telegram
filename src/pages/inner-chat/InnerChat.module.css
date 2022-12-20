@@ -48,3 +48,15 @@
   color: #fff;
   font-size: 20px;
 }
+
+.spinnerContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinnerContainer i {
+  font-size: 24px;
+}

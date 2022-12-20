@@ -1,0 +1,33 @@
+.header {
+  height: 55px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 8px;
+  background-color: #fff;
+}
+
+.header div.left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+}
+
+.left i {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.header div.right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+}
+
+.headerTitle {
+  font-size: 16px;
+  font-weight: bold;
+}

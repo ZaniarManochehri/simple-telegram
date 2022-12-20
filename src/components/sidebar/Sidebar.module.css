@@ -3,6 +3,7 @@
   height: 100%;
   width: 414px;
   position: relative;
+  overflow-x: hidden;
 }
 
 .searchboxContainer {
@@ -22,10 +23,22 @@
   gap: 16px;
 }
 
+.spinnerContainer {
+  width: 100%;
+  padding: 24px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinnerContainer i {
+  font-size: 24px;
+}
+
 .profile {
   position: absolute;
   inset: 0;
-  background-color: #fff;
+  background-color: #f4f4f5;
   margin-left: 100%;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;

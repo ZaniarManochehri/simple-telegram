@@ -1,14 +1,14 @@
 import styles from "./Header.module.css";
 
-const Header = () => {
+const Header = ({ name, avatar }) => {
   return (
     <div className={styles.header}>
       <div className={styles.avatarContainer}>
         <div className={styles.imgContainer}>
-          <img src="/telegram.png" alt="" />
+          <img src={avatar} alt="user-avatar" />
         </div>
         <div className={styles.nameContainer}>
-          <span>Telegram</span>
+          <span>{name}</span>
           <span>last seen 1 hour ago</span>
         </div>
       </div>
