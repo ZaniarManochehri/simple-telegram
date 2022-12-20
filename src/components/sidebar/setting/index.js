@@ -16,7 +16,7 @@ const Setting = ({ onBack, isVisible, onEdit }) => {
 
   return (
     <div className={styles.setting}>
-      <Header onBack={onBack} onEdit={onEdit} />
+      <Header onBack={onBack} onEdit={onEdit} user={user} />
       <div className={styles.profileImageContainer}>
         <img src={ProfileImage} alt="profile-image" />
         {isVisible && (

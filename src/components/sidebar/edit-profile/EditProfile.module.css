@@ -1,8 +1,10 @@
 .card {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: #ffffff;
+  padding-bottom: 16px;
 }
 
 .profileImage {
@@ -11,6 +13,25 @@
   border-radius: 50%;
   position: relative;
   overflow: hidden;
+}
+
+.floatButton {
+  position: absolute;
+  bottom: 15px;
+  right: 10px;
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: #3390ec;
+}
+
+.floatButton i {
+  font-size: 20px;
+  color: #ffffff;
 }
 
 .profileImage img {
@@ -25,4 +46,11 @@
   transform: translate(-50%, -50%);
   color: #ffffff;
   font-size: 24px;
+}
+
+.inputsContainer {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }

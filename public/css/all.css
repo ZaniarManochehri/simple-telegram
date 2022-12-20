@@ -184,3 +184,7 @@
 .fa-lock:before {
   content: "\f023";
 }
+
+.fa-check:before {
+  content: "\f00c";
+}

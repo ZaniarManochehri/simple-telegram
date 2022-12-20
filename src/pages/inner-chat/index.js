@@ -5,9 +5,10 @@ import { useParams } from "react-router-dom";
 //component
 import styles from "./InnerChat.module.css";
 import { HomeHeader, MessageCard, MessageInput } from "components";
+
 const InnerChat = () => {
   const { userId } = useParams();
-  const listRef = useRef(null);
+  const elementRef = useRef(null);
   const [messageInputValue, setMessageInputValue] = useState("");
   const [messages, setMessages] = useState([]);
   const [loadingData, setLoadingData] = useState(false);
@@ -28,6 +29,7 @@ const InnerChat = () => {
       m = (d.getMinutes() < 10 ? "0" : "") + d.getMinutes();
     return h + ":" + m;
   };
+
   const handleClickFloatButton = () => {
     if (messageInputValue) {
       setMessages([
@@ -35,7 +37,7 @@ const InnerChat = () => {
         { message: messageInputValue, time: timeNow(), type: "send" },
       ]);
       setMessageInputValue("");
-      scrollToBottom("list");
+      scrollToBottom(elementRef);
     }
   };
 
@@ -45,9 +47,8 @@ const InnerChat = () => {
     }
   };
 
-  const scrollToBottom = (id) => {
-    const element = document.getElementById(id);
-    element.scrollTop = element.scrollHeight;
+  const scrollToBottom = (ref) => {
+    ref.current.scrollIntoView({ behavior: "smooth" });
   };
 
   useEffect(() => {
@@ -58,47 +59,53 @@ const InnerChat = () => {
         setAvatar(data.avatar);
         setMessages(data.messages);
       });
-      scrollToBottom("list");
     }
   }, [userId]);
 
+  useEffect(() => {
+    if (userId) scrollToBottom(elementRef);
+  }, [messages]);
+
   return (
     <div className={styles.container}>
-      {userId && <HomeHeader name={userName} avatar={avatar} />}
       {userId && (
-        <div className={styles.wrapper}>
-          <div className={styles.content} ref={listRef} id="list">
-            {loadingData ? (
-              <div className={styles.spinnerContainer}>
-                <i className="fa-regular fa-spinner fa-spin"></i>
-              </div>
-            ) : (
-              messages?.map((message, index) => (
-                <Fragment key={index}>
-                  <MessageCard message={message} />
-                </Fragment>
-              ))
-            )}
-          </div>
-          <footer className={styles.footer}>
-            <MessageInput
-              width="100%"
-              value={messageInputValue}
-              onChange={(e) => setMessageInputValue(e.target.value)}
-              onKeyDown={handleKeyDown}
-            />
-            <div
-              className={styles.floatButton}
-              onClick={handleClickFloatButton}
-            >
-              {messageInputValue ? (
-                <i className="fa-regular fa-paper-plane-top"></i>
+        <>
+          <HomeHeader name={userName} avatar={avatar} />
+          <div className={styles.wrapper}>
+            <div className={styles.content}>
+              {loadingData ? (
+                <div className={styles.spinnerContainer}>
+                  <i className="fa-regular fa-spinner fa-spin"></i>
+                </div>
               ) : (
-                <i className="fa-regular fa-microphone"></i>
+                messages?.map((message, index) => (
+                  <Fragment key={index}>
+                    <MessageCard message={message} />
+                  </Fragment>
+                ))
               )}
+              <div ref={elementRef} />
             </div>
-          </footer>
-        </div>
+            <footer className={styles.footer}>
+              <MessageInput
+                width="100%"
+                value={messageInputValue}
+                onChange={(e) => setMessageInputValue(e.target.value)}
+                onKeyDown={handleKeyDown}
+              />
+              <div
+                className={styles.floatButton}
+                onClick={handleClickFloatButton}
+              >
+                {messageInputValue ? (
+                  <i className="fa-regular fa-paper-plane-top"></i>
+                ) : (
+                  <i className="fa-regular fa-microphone"></i>
+                )}
+              </div>
+            </footer>
+          </div>
+        </>
       )}
     </div>
   );

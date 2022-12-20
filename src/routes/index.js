@@ -25,6 +25,7 @@ const Routers = () => {
       isNavigate: true,
     },
   ];
+
   return (
     <BrowserRouter>
       <Routes>

@@ -21,6 +21,7 @@ const Sidebar = () => {
   const [clickedItem, setClickedItem] = useState();
   const [openSetting, setOpenSetting] = useState(false);
   const [openEditProfile, setOpenEditProfile] = useState(false);
+  const [user, setUser] = useState();
 
   const handleClickItem = (item) => {
     setClickedItem(item);
@@ -80,7 +81,10 @@ const Sidebar = () => {
         <Setting
           onBack={() => setOpenSetting(false)}
           isVisible={openSetting}
-          onEdit={(open) => setOpenEditProfile(open)}
+          onEdit={(open, user) => {
+            setOpenEditProfile(open);
+            setUser(user);
+          }}
         />
       </div>
       <div
@@ -91,6 +95,7 @@ const Sidebar = () => {
         <EditProfile
           onBack={() => setOpenEditProfile(false)}
           isVisible={openEditProfile}
+          user={user}
         />
       </div>
     </div>
