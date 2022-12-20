@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 //component
 import styles from "./Sidebar.module.css";
-import { Searchbox } from "components";
+import { Searchbox, Setting } from "components";
 import Menu from "./slot/menu";
 import ChatItem from "./slot/chat-item";
 
@@ -15,7 +15,7 @@ const Sidebar = () => {
   const [searchValue, setSearchValue] = useState("");
   const [searchSectionHeight, setSearchSectionHeight] = useState(0);
   const [clickedItem, setClickedItem] = useState();
-  const [openMenu, setOpenMenu] = useState(false);
+  const [openSetting, setOpenSetting] = useState(false);
 
   const randomString = (length) => {
     let result = "";
@@ -55,14 +55,16 @@ const Sidebar = () => {
     setChats(array);
   }, []);
 
-  const handleClickSetting = () => {};
-
   return (
     <div className={styles.sidebar}>
       <div className={styles.searchboxContainer} ref={searchSectionRef}>
         <Menu
           items={[
-            { title: "Setting", icon: "gear", onClick: handleClickSetting },
+            {
+              title: "Setting",
+              icon: "gear",
+              onClick: () => setOpenSetting(true),
+            },
           ]}
         />
         <Searchbox
@@ -85,6 +87,9 @@ const Sidebar = () => {
             />
           </Fragment>
         ))}
+      </div>
+      <div className={`${styles.profile} ${openSetting && styles.openProfile}`}>
+        <Setting />
       </div>
     </div>
   );

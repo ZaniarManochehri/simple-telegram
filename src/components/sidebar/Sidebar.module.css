@@ -2,6 +2,7 @@
   background-color: #fff;
   height: 100%;
   width: 414px;
+  position: relative;
 }
 
 .searchboxContainer {
@@ -19,4 +20,18 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+.profile {
+  position: absolute;
+  inset: 0;
+  background-color: #fff;
+  margin-left: 100%;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.profile.openProfile {
+  margin-left: 0;
 }
