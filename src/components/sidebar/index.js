@@ -5,16 +5,17 @@ import { useNavigate } from "react-router-dom";
 import styles from "./Sidebar.module.css";
 import { Searchbox } from "components";
 import Menu from "./slot/menu";
-import ChatItem from "./chat-item";
+import ChatItem from "./slot/chat-item";
 
 const Sidebar = () => {
   const searchSectionRef = useRef(null);
   const navigate = useNavigate();
 
-  const [chats, setChats] = useState();
+  const [chats, setChats] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [searchSectionHeight, setSearchSectionHeight] = useState(0);
   const [clickedItem, setClickedItem] = useState();
+  const [openMenu, setOpenMenu] = useState(false);
 
   const randomString = (length) => {
     let result = "";
@@ -54,10 +55,16 @@ const Sidebar = () => {
     setChats(array);
   }, []);
 
+  const handleClickSetting = () => {};
+
   return (
     <div className={styles.sidebar}>
       <div className={styles.searchboxContainer} ref={searchSectionRef}>
-        <Menu />
+        <Menu
+          items={[
+            { title: "Setting", icon: "gear", onClick: handleClickSetting },
+          ]}
+        />
         <Searchbox
           placeholder="Search"
           width="100%"

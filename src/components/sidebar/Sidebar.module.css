@@ -1,22 +1,22 @@
-.sidebar{
-    background-color: #fff;
-    height: 100%;
-    width: 400px;
+.sidebar {
+  background-color: #fff;
+  height: 100%;
+  width: 414px;
 }
 
-.searchboxContainer{
-    padding: 16px;
-    display: flex;
-    flex-direction: row;
-    gap: 8px;
+.searchboxContainer {
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
 }
 
-.chatListContainer{
-    padding: 0 16px;
-    margin-top: 16px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+.chatListContainer {
+  padding: 0 16px;
+  margin-top: 16px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }

@@ -1,29 +1,29 @@
 @font-face {
-    font-family: "Font Awesome 6 Pro";
-    font-style: normal;
-    font-weight: 400;
-    font-display: block;
-    src: url("../webfonts/fa-regular-400.woff2") format("woff2"),
+  font-family: "Font Awesome 6 Pro";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("../webfonts/fa-regular-400.woff2") format("woff2"),
     url("../webfonts/fa-regular-400.ttf") format("truetype");
 }
 
 @font-face {
-    font-family: "Font Awesome 6 Pro";
-    font-style: normal;
-    font-weight: 900;
-    font-display: block;
-    src: url("../webfonts/fa-solid-900.woff2") format("woff2"),
+  font-family: "Font Awesome 6 Pro";
+  font-style: normal;
+  font-weight: 900;
+  font-display: block;
+  src: url("../webfonts/fa-solid-900.woff2") format("woff2"),
     url("../webfonts/fa-solid-900.ttf") format("truetype");
 }
 
 .fa-regular {
-    font-family: "Font Awesome 6 Pro";
-    font-weight: 400;
+  font-family: "Font Awesome 6 Pro";
+  font-weight: 400;
 }
 
 .fa-solid {
-    font-family: "Font Awesome 6 Pro";
-    font-weight: 900;
+  font-family: "Font Awesome 6 Pro";
+  font-weight: 900;
 }
 
 .fa,
@@ -39,89 +39,112 @@
 .fa-duotone,
 .fab,
 .fa-brands {
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    display: var(--fa-display, inline-block);
-    font-style: normal;
-    font-variant: normal;
-    line-height: 1;
-    text-rendering: auto;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: var(--fa-display, inline-block);
+  font-style: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-rendering: auto;
 }
 .fas,
 .fa-solid {
-    font-family: "Font Awesome 6 Pro";
-    font-weight: 900;
+  font-family: "Font Awesome 6 Pro";
+  font-weight: 900;
 }
 :root,
 :host {
-    --fa-font-thin: normal 100 1em/1 "Font Awesome 6 Pro";
+  --fa-font-thin: normal 100 1em/1 "Font Awesome 6 Pro";
 }
 @keyframes fa-spin {
-    0% {
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-    100% {
-        -webkit-transform: rotate(360deg);
-        transform: rotate(360deg);
-    }
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }
 .fa-spin {
-    -webkit-animation-name: fa-spin;
-    animation-name: fa-spin;
-    -webkit-animation-delay: var(--fa-animation-delay, 0);
-    animation-delay: var(--fa-animation-delay, 0);
-    -webkit-animation-direction: var(--fa-animation-direction, normal);
-    animation-direction: var(--fa-animation-direction, normal);
-    -webkit-animation-duration: var(--fa-animation-duration, 2s);
-    animation-duration: var(--fa-animation-duration, 2s);
-    -webkit-animation-iteration-count: var(
-            --fa-animation-iteration-count,
-            infinite
-    );
-    animation-iteration-count: var(--fa-animation-iteration-count, infinite);
-    -webkit-animation-timing-function: var(--fa-animation-timing, linear);
-    animation-timing-function: var(--fa-animation-timing, linear);
+  -webkit-animation-name: fa-spin;
+  animation-name: fa-spin;
+  -webkit-animation-delay: var(--fa-animation-delay, 0);
+  animation-delay: var(--fa-animation-delay, 0);
+  -webkit-animation-direction: var(--fa-animation-direction, normal);
+  animation-direction: var(--fa-animation-direction, normal);
+  -webkit-animation-duration: var(--fa-animation-duration, 2s);
+  animation-duration: var(--fa-animation-duration, 2s);
+  -webkit-animation-iteration-count: var(
+    --fa-animation-iteration-count,
+    infinite
+  );
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  -webkit-animation-timing-function: var(--fa-animation-timing, linear);
+  animation-timing-function: var(--fa-animation-timing, linear);
 }
 @media (prefers-reduced-motion: reduce) {
-    .fa-beat,
-    .fa-bounce,
-    .fa-fade,
-    .fa-beat-fade,
-    .fa-flip,
-    .fa-pulse,
-    .fa-shake,
-    .fa-spin,
-    .fa-spin-pulse {
-        -webkit-animation-delay: -1ms;
-        animation-delay: -1ms;
-        -webkit-animation-duration: 1ms;
-        animation-duration: 1ms;
-        -webkit-animation-iteration-count: 1;
-        animation-iteration-count: 1;
-        transition-delay: 0s;
-        transition-duration: 0s;
-    }
+  .fa-beat,
+  .fa-bounce,
+  .fa-fade,
+  .fa-beat-fade,
+  .fa-flip,
+  .fa-pulse,
+  .fa-shake,
+  .fa-spin,
+  .fa-spin-pulse {
+    -webkit-animation-delay: -1ms;
+    animation-delay: -1ms;
+    -webkit-animation-duration: 1ms;
+    animation-duration: 1ms;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+    transition-delay: 0s;
+    transition-duration: 0s;
+  }
 }
 
 .fa-magnifying-glass:before,
 .fa-search:before {
-    content: "\f002";
+  content: "\f002";
 }
 .fa-xmark:before {
-    content: "\f00d";
+  content: "\f00d";
 }
 
 .fa-bars:before,
 .fa-navicon:before {
-    content: "\f0c9";
+  content: "\f0c9";
 }
 
 .fa-phone:before {
-    content: "\f095";
+  content: "\f095";
 }
 
 .fa-ellipsis-v:before,
 .fa-ellipsis-vertical:before {
-    content: "\f142";
+  content: "\f142";
+}
+
+.fa-face-smile:before,
+.fa-smile:before {
+  content: "\f118";
+}
+
+.fa-paperclip:before {
+  content: "\f0c6";
+}
+
+.fa-microphone:before {
+  content: "\f130";
+}
+
+.fa-paper-plane-alt:before,
+.fa-paper-plane-top:before,
+.fa-send:before {
+  content: "\e20a";
+}
+
+.fa-gear:before {
+  content: "\f013";
 }

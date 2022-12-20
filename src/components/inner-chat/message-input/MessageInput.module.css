@@ -1,0 +1,16 @@
+.container{
+    height: 48px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 16px;
+    gap: 16px;
+    padding: 0 16px;
+}
+
+.container input[type = "text"]{
+    border: 0;
+    outline: none;
+    width: 100%;
+}
