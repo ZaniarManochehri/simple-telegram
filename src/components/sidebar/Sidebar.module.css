@@ -45,6 +45,20 @@
   transition: all 0.3s ease;
 }
 
+.editProfile {
+  position: absolute;
+  inset: 0;
+  background-color: #f4f4f5;
+  margin-left: 100%;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.editProfile.openEditProfile {
+  margin-left: 0;
+}
+
 .profile.openProfile {
   margin-left: 0;
 }

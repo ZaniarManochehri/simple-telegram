@@ -1,6 +1,6 @@
 import styles from "./Header.module.css";
 
-const Header = ({ onBack }) => {
+const Header = ({ onBack, onEdit }) => {
   return (
     <div className={styles.header}>
       <div className={styles.left}>
@@ -8,7 +8,7 @@ const Header = ({ onBack }) => {
         <span className={styles.headerTitle}>Setting</span>
       </div>
       <div className={styles.right}>
-        <i className="fa-regular fa-pen"></i>
+        <i className="fa-regular fa-pen" onClick={() => onEdit(true)}></i>
         <i className="fa-regular fa-ellipsis-vertical"></i>
       </div>
     </div>

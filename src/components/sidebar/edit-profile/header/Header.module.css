@@ -1,0 +1,17 @@
+.header {
+  padding: 16px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+}
+
+.header i {
+  font-size: 20px;
+}
+
+.header span {
+  font-size: 16px;
+  font-weight: bold;
+}

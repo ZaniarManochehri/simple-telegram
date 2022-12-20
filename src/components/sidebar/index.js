@@ -8,6 +8,7 @@ import { Searchbox, Setting } from "components";
 import Menu from "./slot/menu";
 import ChatItem from "./slot/chat-item";
 import { ReactLog, Wolf, Telegram } from "assets";
+import EditProfile from "./edit-profile";
 
 const Sidebar = () => {
   const searchSectionRef = useRef(null);
@@ -19,6 +20,7 @@ const Sidebar = () => {
   const [searchSectionHeight, setSearchSectionHeight] = useState(0);
   const [clickedItem, setClickedItem] = useState();
   const [openSetting, setOpenSetting] = useState(false);
+  const [openEditProfile, setOpenEditProfile] = useState(false);
 
   const handleClickItem = (item) => {
     setClickedItem(item);
@@ -75,7 +77,21 @@ const Sidebar = () => {
         )}
       </div>
       <div className={`${styles.profile} ${openSetting && styles.openProfile}`}>
-        <Setting onBack={() => setOpenSetting(false)} />
+        <Setting
+          onBack={() => setOpenSetting(false)}
+          isVisible={openSetting}
+          onEdit={(open) => setOpenEditProfile(open)}
+        />
+      </div>
+      <div
+        className={`${styles.editProfile} ${
+          openEditProfile && styles.openEditProfile
+        }`}
+      >
+        <EditProfile
+          onBack={() => setOpenEditProfile(false)}
+          isVisible={openEditProfile}
+        />
       </div>
     </div>
   );

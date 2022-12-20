@@ -159,3 +159,28 @@
 .fa-spinner:before {
   content: "\f110";
 }
+
+.fa-camera:before {
+  content: "\f030";
+}
+
+.fa-at:before {
+  content: "\40";
+}
+
+.fa-circle-info:before,
+.fa-info-circle:before {
+  content: "\f05a";
+}
+
+.fa-bell:before {
+  content: "\f0f3";
+}
+
+.fa-database:before {
+  content: "\f1c0";
+}
+
+.fa-lock:before {
+  content: "\f023";
+}
