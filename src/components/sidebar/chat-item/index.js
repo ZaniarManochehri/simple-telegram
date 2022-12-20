@@ -16,9 +16,9 @@ const ChatItem = ({ item, selected, onClick }) => {
       <div className={styles.content}>
         <div className={styles.topSection}>
           <span className={styles.name}>{item.name}</span>
-          <span>{item.date}</span>
+          <span className={styles.date}>{item.date}</span>
         </div>
-        <span>{lastChat}</span>
+        <span className={styles.lastMessage}>{lastChat}</span>
       </div>
     </div>
   );
