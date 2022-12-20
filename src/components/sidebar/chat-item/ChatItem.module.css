@@ -9,8 +9,19 @@
 }
 
 .name{
-  font-size: 18px;
+  font-size: 14px;
   font-weight: bold;
+}
+
+.date{
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.lastMessage{
+  font-size: 14px;
+  font-weight: normal;
+  color: #7f7d8b;
 }
 
 .chatItem.selected{
