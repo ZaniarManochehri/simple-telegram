@@ -42,8 +42,8 @@ const Sidebar = () => {
   }, []);
 
   const updateUser = (bio, user_id, name, last_name) => {
-      setUser({...user, bio, user_id, name, last_name})
-  }
+    setUser({ ...user, bio, user_id, name, last_name });
+  };
 
   const handleSearch = (e) => {
     const text = e.target.value.trim().toLowerCase();
@@ -63,7 +63,7 @@ const Sidebar = () => {
         <Menu
           items={[
             {
-              title: "Setting",
+              title: "Settings",
               icon: "gear",
               onClick: () => setOpenSetting(true),
             },

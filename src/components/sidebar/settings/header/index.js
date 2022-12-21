@@ -5,7 +5,7 @@ const Header = ({ onBack, onEdit }) => {
     <div className={styles.header}>
       <div className={styles.left}>
         <i className="fa-regular fa-arrow-left" onClick={onBack}></i>
-        <span className={styles.headerTitle}>Setting</span>
+        <span className={styles.headerTitle}>Settings</span>
       </div>
       <div className={styles.right}>
         <i

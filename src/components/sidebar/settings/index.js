@@ -2,16 +2,16 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 //component
-import styles from "./Setting.module.css";
+import styles from "./Settings.module.css";
 import Header from "./header";
 import { ProfileImage } from "assets";
 import DetailProfileItem from "./slot/detail-profile-item";
 
-const Setting = ({ onBack, isVisible, onEdit, user }) => {
+const Settings = ({ onBack, isVisible, onEdit, user }) => {
   const [mUser, setUser] = useState();
 
   useEffect(() => {
-    setUser(user)
+    setUser(user);
   }, [user]);
 
   return (
@@ -52,4 +52,4 @@ const Setting = ({ onBack, isVisible, onEdit, user }) => {
   );
 };
 
-export default Setting;
+export default Settings;
