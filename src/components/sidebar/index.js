@@ -2,7 +2,7 @@ import { Fragment, useState, useRef, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-import { Searchbox, Setting } from "components";
+import { Searchbox, Settings } from "components";
 import Menu from "./slot/menu";
 import ChatItem from "./slot/chat-item";
 import EditProfile from "./edit-profile";
@@ -103,7 +103,7 @@ const Sidebar = () => {
         )}
       </div>
       <div className={`${styles.profile} ${openSetting && styles.openProfile}`}>
-        <Setting
+        <Settings
           onBack={() => setOpenSetting(false)}
           isVisible={openSetting}
           user={user}
