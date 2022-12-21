@@ -1,1 +1,1 @@
-export { default as InnerChatPage } from "./inner-chat";
+export { default as InnerChatPage } from './inner-chat';

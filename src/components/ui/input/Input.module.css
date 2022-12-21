@@ -9,7 +9,7 @@
   gap: 16px;
 }
 
-.container input[type="text"] {
+.container input[type='text'] {
   border: 0;
   outline: none;
   width: 100%;

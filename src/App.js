@@ -1,11 +1,5 @@
-import Routers from "./routes";
+import Routers from './routes';
 
-function App() {
-  return (
-    <div>
-      <Routers />
-    </div>
-  );
-}
+const App = () => <Routers />;
 
 export default App;

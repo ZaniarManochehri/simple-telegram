@@ -1,23 +1,23 @@
-import { Fragment, useState, useRef, useEffect } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Fragment, useState, useRef, useEffect } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
-//component
-import styles from "./Sidebar.module.css";
-import { Searchbox, Setting } from "components";
-import Menu from "./slot/menu";
-import ChatItem from "./slot/chat-item";
-import { ReactLog, Wolf, Telegram } from "assets";
-import EditProfile from "./edit-profile";
+import { Searchbox, Setting } from 'components';
+import Menu from './slot/menu';
+import ChatItem from './slot/chat-item';
+import EditProfile from './edit-profile';
+
+import styles from './Sidebar.module.css';
 
 const Sidebar = () => {
   const searchSectionRef = useRef(null);
+
   const navigate = useNavigate();
 
   const [chats, setChats] = useState([]);
   const [allChats, setAllChats] = useState([]);
   const [loadingChats, setLoadingChats] = useState(false);
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState('');
   const [searchSectionHeight, setSearchSectionHeight] = useState(0);
   const [clickedItem, setClickedItem] = useState();
   const [openSetting, setOpenSetting] = useState(false);
@@ -33,12 +33,14 @@ const Sidebar = () => {
     setSearchSectionHeight(searchSectionRef.current.clientHeight + 25);
 
     setLoadingChats(true);
-    axios.get("http://localhost:3004/contacts").then((res) => {
+    axios.get(`${process.env.REACT_APP_BASE_URL}/contacts`).then((res) => {
       setChats(res.data);
       setAllChats(res.data);
       setLoadingChats(false);
     });
-    axios.get("http://localhost:3004/profile").then((res) => setUser(res.data));
+    axios
+      .get(`${process.env.REACT_APP_BASE_URL}/profile`)
+      .then((res) => setUser(res.data));
   }, []);
 
   const updateUser = (bio, user_id, name, last_name) => {
@@ -63,19 +65,19 @@ const Sidebar = () => {
         <Menu
           items={[
             {
-              title: "Settings",
-              icon: "gear",
+              title: 'Setting',
+              icon: 'gear',
               onClick: () => setOpenSetting(true),
             },
           ]}
         />
         <Searchbox
-          placeholder="Search"
-          width="100%"
+          placeholder='Search'
+          width='100%'
           value={searchValue}
           onChange={handleSearch}
           onClear={() => {
-            setSearchValue("");
+            setSearchValue('');
             setChats(allChats);
           }}
         />
@@ -86,14 +88,14 @@ const Sidebar = () => {
       >
         {loadingChats ? (
           <div className={styles.spinnerContainer}>
-            <i className="fa-regular fa-spinner fa-spin"></i>
+            <i className='fa-regular fa-spinner fa-spin'></i>
           </div>
         ) : (
           chats?.map((item, index) => (
             <Fragment key={index}>
               <ChatItem
                 item={item}
-                selected={item.id == clickedItem?.id}
+                selected={item.id === clickedItem?.id}
                 onClick={() => handleClickItem(item)}
               />
             </Fragment>

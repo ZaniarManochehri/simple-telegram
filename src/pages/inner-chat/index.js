@@ -1,55 +1,39 @@
-import { useState, useEffect, useRef, Fragment } from "react";
-import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useState, useEffect, useRef, Fragment } from 'react';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
-//component
-import styles from "./InnerChat.module.css";
-import { HomeHeader, MessageCard, MessageInput } from "components";
+import { HomeFooter, HomeHeader, MessageCard } from 'components';
+
+import styles from './InnerChat.module.css';
 
 const InnerChat = () => {
   const { userId } = useParams();
-  const elementRef = useRef(null);
-  const [messageInputValue, setMessageInputValue] = useState("");
+
   const [messages, setMessages] = useState([]);
   const [loadingData, setLoadingData] = useState(false);
-  const [userName, setUserName] = useState("");
-  const [avatar, setAvatar] = useState("");
+  const [userName, setUserName] = useState('');
+  const [avatar, setAvatar] = useState('');
 
   const getConversion = async () => {
     setLoadingData(true);
+
     const { data } = await axios.get(
-      `http://localhost:3004/messages/${userId}`
+      `${process.env.REACT_APP_BASE_URL}/messages/${userId}`
     );
+
     return data;
   };
 
-  const timeNow = () => {
-    const d = new Date(),
-      h = (d.getHours() < 10 ? "0" : "") + d.getHours(),
-      m = (d.getMinutes() < 10 ? "0" : "") + d.getMinutes();
-    return h + ":" + m;
-  };
-
-  const handleClickFloatButton = () => {
-    if (messageInputValue) {
-      setMessages([
-        ...messages,
-        { message: messageInputValue, time: timeNow(), type: "send" },
-      ]);
-      setMessageInputValue("");
-      scrollToBottom(elementRef);
-    }
-  };
-
-  const handleKeyDown = (event) => {
-    if (event.key === "Enter") {
-      handleClickFloatButton();
-    }
-  };
+  const elementRef = useRef(null);
 
   const scrollToBottom = (ref) => {
-    ref.current.scrollIntoView({ behavior: "smooth" });
+    ref.current.scrollIntoView({ behavior: 'smooth' });
   };
+
+  useEffect(() => {
+    if (userId) scrollToBottom(elementRef);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [messages]);
 
   useEffect(() => {
     if (userId) {
@@ -60,11 +44,8 @@ const InnerChat = () => {
         setMessages(data.messages);
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId]);
-
-  useEffect(() => {
-    if (userId) scrollToBottom(elementRef);
-  }, [messages]);
 
   return (
     <div className={styles.container}>
@@ -75,7 +56,7 @@ const InnerChat = () => {
             <div className={styles.content}>
               {loadingData ? (
                 <div className={styles.spinnerContainer}>
-                  <i className="fa-regular fa-spinner fa-spin"></i>
+                  <i className='fa-regular fa-spinner fa-spin'></i>
                 </div>
               ) : (
                 messages?.map((message, index) => (
@@ -86,25 +67,13 @@ const InnerChat = () => {
               )}
               <div ref={elementRef} />
             </div>
-            <footer className={styles.footer}>
-              <MessageInput
-                width="100%"
-                value={messageInputValue}
-                onChange={(e) => setMessageInputValue(e.target.value)}
-                onKeyDown={handleKeyDown}
-                placeholder="Message"
-              />
-              <div
-                className={styles.floatButton}
-                onClick={handleClickFloatButton}
-              >
-                {messageInputValue ? (
-                  <i className="fa-regular fa-paper-plane-top"></i>
-                ) : (
-                  <i className="fa-regular fa-microphone"></i>
-                )}
-              </div>
-            </footer>
+            <HomeFooter
+              setMessages={setMessages}
+              messages={messages}
+              userId={userId}
+              elementRef={elementRef}
+              scrollToBottom={scrollToBottom}
+            />
           </div>
         </>
       )}

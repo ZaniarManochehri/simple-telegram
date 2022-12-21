@@ -1,0 +1,19 @@
+.item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+}
+
+.item div {
+  display: flex;
+  flex-direction: column;
+}
+
+.item i {
+  font-size: 20px;
+}
+
+.descDetailProfileItems {
+  color: #acafb1;
+}

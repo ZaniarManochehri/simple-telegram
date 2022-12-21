@@ -1,17 +1,18 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
-//component
-import styles from "./EditProfile.module.css";
-import Header from "./header";
-import { ProfileImage } from "assets";
-import { Input } from "components";
+import Header from './header';
+import { Input } from 'components';
+
+import { ProfileImage } from 'assets';
+
+import styles from './EditProfile.module.css';
 
 const EditProfile = ({ onBack, isVisible, user, updateUser }) => {
-  const [nameValue, setNameValue] = useState("");
-  const [lastNameValue, setLastNameValue] = useState("");
-  const [bioValue, setBioValue] = useState("");
-  const [usernameValue, setUsernameValue] = useState("");
+  const [nameValue, setNameValue] = useState('');
+  const [lastNameValue, setLastNameValue] = useState('');
+  const [bioValue, setBioValue] = useState('');
+  const [usernameValue, setUsernameValue] = useState('');
 
   useEffect(() => {
     setNameValue(user?.name);
@@ -23,7 +24,7 @@ const EditProfile = ({ onBack, isVisible, user, updateUser }) => {
   const handleEdit = () => {
     axios
       .patch(
-        "http://localhost:3004/profile",
+        `${process.env.REACT_APP_BASE_URL}/profile`,
         {
           name: nameValue,
           last_name: lastNameValue,
@@ -32,11 +33,11 @@ const EditProfile = ({ onBack, isVisible, user, updateUser }) => {
         },
         {
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
         }
       )
-      .then((response) => {
+      .then(() => {
         updateUser(bioValue, usernameValue, nameValue, lastNameValue);
         onBack();
       })
@@ -51,45 +52,50 @@ const EditProfile = ({ onBack, isVisible, user, updateUser }) => {
       <div className={styles.card}>
         {isVisible && (
           <div className={styles.profileImage}>
-            <img src={ProfileImage} alt="profile-image" />
+            <img src={ProfileImage} alt='profile-avatar' />
             <div className={styles.icon}>
-              <i className="fa-regular fa-camera"></i>
+              <i className='fa-regular fa-camera'></i>
             </div>
           </div>
         )}
+
         <div className={styles.inputsContainer}>
           <Input
-            width="100%"
-            placeholder="Name"
+            width='100%'
+            placeholder='Name'
             value={nameValue}
             onChange={(e) => setNameValue(e.target.value)}
           />
+
           <Input
-            width="100%"
-            placeholder="Last Name"
+            width='100%'
+            placeholder='Last Name'
             value={lastNameValue}
             onChange={(e) => setLastNameValue(e.target.value)}
           />
+
           <Input
-            width="100%"
-            placeholder="Bio (optional)"
+            width='100%'
+            placeholder='Bio (optional)'
             value={bioValue}
             onChange={(e) => setBioValue(e.target.value)}
           />
+
           <Input
-            width="100%"
-            placeholder="Username (optional)"
+            width='100%'
+            placeholder='Username (optional)'
             value={usernameValue}
             onChange={(e) => setUsernameValue(e.target.value)}
           />
         </div>
       </div>
-      {nameValue != user?.name ||
+
+      {nameValue !== user?.name ||
       lastNameValue !== user?.last_name ||
       bioValue !== user?.bio ||
       usernameValue !== user?.user_id ? (
         <div className={styles.floatButton} onClick={handleEdit}>
-          <i className="fa-regular fa-check"></i>
+          <i className='fa-regular fa-check'></i>
         </div>
       ) : null}
     </div>

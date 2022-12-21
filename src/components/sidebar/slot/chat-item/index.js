@@ -1,17 +1,18 @@
-import styles from "./ChatItem.module.css";
+import styles from './ChatItem.module.css';
 
 const ChatItem = ({ item, selected, onClick }) => {
   const lastChat =
     item?.last_message?.length > 30
-      ? item?.last_message.substring(0, 20) + "..."
+      ? item?.last_message.substring(0, 20) + '...'
       : item?.last_message;
+
   return (
     <div
       className={`${styles.chatItem} ${selected && styles.selected}`}
       onClick={onClick}
     >
       <div className={styles.imageContainer}>
-        <img src={item.avatar} alt="user-avatar" className={styles.img} />
+        <img src={item.avatar} alt='user-avatar' className={styles.img} />
       </div>
       <div className={styles.content}>
         <div className={styles.topSection}>
