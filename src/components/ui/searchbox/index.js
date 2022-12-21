@@ -1,6 +1,6 @@
 import styles from "./Searchbox.module.css";
 
-const Searchbox = ({ value = "", onChange, placeholder, width }) => {
+const Searchbox = ({ value = "", onChange, placeholder, width, onClear }) => {
   return (
     <div className={styles.searchbox} style={{ width }}>
       <i className="fa-regular fa-magnifying-glass"></i>
@@ -10,7 +10,7 @@ const Searchbox = ({ value = "", onChange, placeholder, width }) => {
         value={value}
         onChange={(e) => onChange(e)}
       />
-      <i className="fa-regular fa-xmark"></i>
+      {value && <i className="fa-regular fa-xmark" onClick={onClear}></i>}
     </div>
   );
 };

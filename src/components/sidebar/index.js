@@ -15,6 +15,7 @@ const Sidebar = () => {
   const navigate = useNavigate();
 
   const [chats, setChats] = useState([]);
+  const [allChats, setAllChats] = useState([]);
   const [loadingChats, setLoadingChats] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [searchSectionHeight, setSearchSectionHeight] = useState(0);
@@ -34,9 +35,22 @@ const Sidebar = () => {
     setLoadingChats(true);
     axios.get("http://localhost:3004/contacts").then((res) => {
       setChats(res.data);
+      setAllChats(res.data);
       setLoadingChats(false);
     });
   }, []);
+
+  const handleSearch = (e) => {
+    const text = e.target.value.trim().toLowerCase();
+    setSearchValue(text);
+    if (text) {
+      setChats(
+        allChats.filter((chat) => chat.name.toLowerCase().includes(text))
+      );
+    } else {
+      setChats(allChats);
+    }
+  };
 
   return (
     <div className={styles.sidebar}>
@@ -54,7 +68,11 @@ const Sidebar = () => {
           placeholder="Search"
           width="100%"
           value={searchValue}
-          onChange={(e) => setSearchValue(e.target.value)}
+          onChange={handleSearch}
+          onClear={() => {
+            setSearchValue("");
+            setChats(allChats);
+          }}
         />
       </div>
       <div
