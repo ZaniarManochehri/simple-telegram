@@ -92,6 +92,7 @@ const InnerChat = () => {
                 value={messageInputValue}
                 onChange={(e) => setMessageInputValue(e.target.value)}
                 onKeyDown={handleKeyDown}
+                placeholder="Message"
               />
               <div
                 className={styles.floatButton}
