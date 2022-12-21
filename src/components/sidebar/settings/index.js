@@ -1,14 +1,13 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 
-//component
-import styles from "./Settings.module.css";
 import Header from "./header";
-import { ProfileImage } from "assets";
 import DetailProfileItem from "./slot/detail-profile-item";
+import { ProfileImage } from "assets";
+
+import styles from "./Settings.module.css";
 
 const Settings = ({ onBack, isVisible, onEdit, user }) => {
-  const [mUser, setUser] = useState();
+  const [, setUser] = useState();
 
   useEffect(() => {
     setUser(user);
@@ -18,7 +17,7 @@ const Settings = ({ onBack, isVisible, onEdit, user }) => {
     <div className={styles.setting}>
       <Header onBack={onBack} onEdit={onEdit} />
       <div className={styles.profileImageContainer}>
-        <img src={ProfileImage} alt="profile-image" />
+        <img src={ProfileImage} alt="profile-avatar" />
         {isVisible && (
           <div className={styles.addPhotoContainer}>
             <i className="fa-regular fa-camera"></i>

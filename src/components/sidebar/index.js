@@ -1,13 +1,13 @@
-import { Fragment, useState, useRef, useEffect } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Fragment, useState, useRef, useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-import { Searchbox, Setting } from 'components';
-import Menu from './slot/menu';
-import ChatItem from './slot/chat-item';
-import EditProfile from './edit-profile';
+import { Searchbox, Setting } from "components";
+import Menu from "./slot/menu";
+import ChatItem from "./slot/chat-item";
+import EditProfile from "./edit-profile";
 
-import styles from './Sidebar.module.css';
+import styles from "./Sidebar.module.css";
 
 const Sidebar = () => {
   const searchSectionRef = useRef(null);
@@ -17,7 +17,7 @@ const Sidebar = () => {
   const [chats, setChats] = useState([]);
   const [allChats, setAllChats] = useState([]);
   const [loadingChats, setLoadingChats] = useState(false);
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState("");
   const [searchSectionHeight, setSearchSectionHeight] = useState(0);
   const [clickedItem, setClickedItem] = useState();
   const [openSetting, setOpenSetting] = useState(false);
@@ -65,19 +65,19 @@ const Sidebar = () => {
         <Menu
           items={[
             {
-              title: 'Setting',
-              icon: 'gear',
+              title: "Settings",
+              icon: "gear",
               onClick: () => setOpenSetting(true),
             },
           ]}
         />
         <Searchbox
-          placeholder='Search'
-          width='100%'
+          placeholder="Search"
+          width="100%"
           value={searchValue}
           onChange={handleSearch}
           onClear={() => {
-            setSearchValue('');
+            setSearchValue("");
             setChats(allChats);
           }}
         />
@@ -88,7 +88,7 @@ const Sidebar = () => {
       >
         {loadingChats ? (
           <div className={styles.spinnerContainer}>
-            <i className='fa-regular fa-spinner fa-spin'></i>
+            <i className="fa-regular fa-spinner fa-spin"></i>
           </div>
         ) : (
           chats?.map((item, index) => (
