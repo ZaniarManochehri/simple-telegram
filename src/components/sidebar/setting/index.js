@@ -7,16 +7,16 @@ import Header from "./header";
 import { ProfileImage } from "assets";
 import DetailProfileItem from "./slot/detail-profile-item";
 
-const Setting = ({ onBack, isVisible, onEdit }) => {
-  const [user, setUser] = useState();
+const Setting = ({ onBack, isVisible, onEdit, user }) => {
+  const [mUser, setUser] = useState();
 
   useEffect(() => {
-    axios.get("http://localhost:3004/profile").then((res) => setUser(res.data));
-  }, []);
+    setUser(user)
+  }, [user]);
 
   return (
     <div className={styles.setting}>
-      <Header onBack={onBack} onEdit={onEdit} user={user} />
+      <Header onBack={onBack} onEdit={onEdit} />
       <div className={styles.profileImageContainer}>
         <img src={ProfileImage} alt="profile-image" />
         {isVisible && (

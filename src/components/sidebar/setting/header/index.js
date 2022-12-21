@@ -1,6 +1,6 @@
 import styles from "./Header.module.css";
 
-const Header = ({ onBack, onEdit, user }) => {
+const Header = ({ onBack, onEdit }) => {
   return (
     <div className={styles.header}>
       <div className={styles.left}>
@@ -11,7 +11,7 @@ const Header = ({ onBack, onEdit, user }) => {
         <i
           className="fa-regular fa-pen"
           style={{ cursor: "pointer" }}
-          onClick={() => onEdit(true, user)}
+          onClick={() => onEdit(true)}
         ></i>
         <i className="fa-regular fa-ellipsis-vertical"></i>
       </div>

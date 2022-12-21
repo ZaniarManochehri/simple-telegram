@@ -7,7 +7,7 @@ import Header from "./header";
 import { ProfileImage } from "assets";
 import { Input } from "components";
 
-const EditProfile = ({ onBack, isVisible, user, updateProfile }) => {
+const EditProfile = ({ onBack, isVisible, user, updateUser }) => {
   const [nameValue, setNameValue] = useState("");
   const [lastNameValue, setLastNameValue] = useState("");
   const [bioValue, setBioValue] = useState("");
@@ -37,6 +37,7 @@ const EditProfile = ({ onBack, isVisible, user, updateProfile }) => {
         }
       )
       .then((response) => {
+        updateUser(bioValue, usernameValue, nameValue, lastNameValue);
         onBack();
       })
       .catch((error) => {

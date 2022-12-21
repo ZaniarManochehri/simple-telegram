@@ -22,7 +22,7 @@ const Sidebar = () => {
   const [clickedItem, setClickedItem] = useState();
   const [openSetting, setOpenSetting] = useState(false);
   const [openEditProfile, setOpenEditProfile] = useState(false);
-  const [user, setUser] = useState();
+  const [user, setUser] = useState({});
 
   const handleClickItem = (item) => {
     setClickedItem(item);
@@ -38,7 +38,12 @@ const Sidebar = () => {
       setAllChats(res.data);
       setLoadingChats(false);
     });
+    axios.get("http://localhost:3004/profile").then((res) => setUser(res.data));
   }, []);
+
+  const updateUser = (bio, user_id, name, last_name) => {
+      setUser({...user, bio, user_id, name, last_name})
+  }
 
   const handleSearch = (e) => {
     const text = e.target.value.trim().toLowerCase();
@@ -99,9 +104,9 @@ const Sidebar = () => {
         <Setting
           onBack={() => setOpenSetting(false)}
           isVisible={openSetting}
+          user={user}
           onEdit={(open, user) => {
             setOpenEditProfile(open);
-            setUser(user);
           }}
         />
       </div>
@@ -114,6 +119,7 @@ const Sidebar = () => {
           onBack={() => setOpenEditProfile(false)}
           isVisible={openEditProfile}
           user={user}
+          updateUser={updateUser}
         />
       </div>
     </div>
