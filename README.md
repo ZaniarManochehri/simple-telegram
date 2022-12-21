@@ -1,16 +1,5 @@
-# Simple Telegram App with React
+### 1 : npm i
 
-Zaniar Manochehri
+### 2 : npm run server for running mock server
 
-## Installation steps
-
-1. Run the following command for the first time to start `json-server`:
-
-### `npm run server`
-
-2. Start project with the following command:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 3 : npm start
